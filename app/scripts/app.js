@@ -18,12 +18,12 @@
         templateUrl: '/templates/landing.html'
       })
       .state('collection', {
-        url: '/',
+        url: '/collection',
         templateUrl: '/templates/collection.html'
       })
       .state('index', {
-        url: '/',
-        templateUrl: 'index.html'
+        url: '/index',
+        templateUrl: '/templates/landing.html'
       })
       .state('album', {
         url:'/album',
