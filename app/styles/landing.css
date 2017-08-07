@@ -37,7 +37,7 @@ body.landing {
     padding: 2rem;
     text-align: center;
     opacity: 1;
-    transform: scaleX(0.5) translate(0,0) rotate(-1000deg);
+
 }
 
 .point .point-title {

@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  background-image: url(../assets/images/blurred_backgrounds/blur_bg_3.jpg);
+  background-image: url(../assets/images/album_covers/18.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
@@ -18,7 +18,7 @@ body {
   font-family: 'Open Sans';
   color: white;
   min-height: 100%; /*height of body is 100% of window minimum*/
-  padding-bottom: 200px;
+  padding-bottom: 200
 }
 
 .navbar {
@@ -43,7 +43,6 @@ body {
   color: white;
   text-decoration: none;
 }
-
 
 .links-container .navbar-link  {
   display: table-cell;
