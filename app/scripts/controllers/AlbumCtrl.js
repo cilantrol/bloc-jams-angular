@@ -1,8 +1,5 @@
 (function() {
-  function AlbumCtrl() {
-    //Add an albumData property that holds a copy of albumPicasso.
-    //do not manipulate the DOM with controller
-    //this.albumData = angular.copy(albumPicasso);
+  function AlbumCtrl(Fixtures) {
 /*this.albumData = {
   title: 'The Colors',
   artist: 'Pablo Picasso',
@@ -17,12 +14,16 @@
         {title: 'Magenta', duration: 374.22, audioUrl: 'assets/music/magenta'}
   ]
 };*/
-this.albumData = angular.copy(albumPicasso);
+//this.albumData = angular.copy(albumPicasso);
+//Update AlbumCtrl to use the Fixtures service's getAlbum() method:
+  this.albumData = Fixtures.getAlbum();
   }
 
   angular
     .module('blocJams')
-    .controller('AlbumCtrl', AlbumCtrl);
+    //We add Fixtures to AlbumCtrl's array of dependencies.
+    //Once injected, the service is available for use within the controller.
+    .controller('AlbumCtrl', ['Fixtures', AlbumCtrl]);
 })();
 //ng-repeat="album in album.albumData"
 /*Read the AngularJS Developer Guide on controllers. x
