@@ -25,6 +25,7 @@
       })
       .state('index', {
         url: '/index',
+        controller: 'LandingCtrl as landing',
         templateUrl: '/templates/landing.html'
       })
       .state('album', {
