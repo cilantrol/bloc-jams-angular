@@ -1,0 +1,43 @@
+
+when to use object vs array? in a controller property
+  for angular to store information?
+  because ng-repeat cycles through arrays?
+  .push vs property: {}
+
+how to use a controller properly?  syntaxing?
+why exactly is this preferred?
+
+  (function (){
+    function "controller name"($scope){
+      $scope.prop1: blah,
+      $scope.prop2: blahblah
+      if we use 'this'.prop1 here it will refer to the argument passed in?
+    }
+
+    angular
+    .module("appname")
+    .controller("controller name referred in app.js ",actual function "controller name");
+
+  })();
+
+vs
+app.controller('controller name', ['$scope', function($scope) {
+  $scope.prop1: blah,
+  $scope.prop2: blahblah
+});
+
+
+ng-repeat=" key in object/array"
+    this seems similar to a for in loop
+    i never really understood the concept of it because the 'key' can be named anything really such as property in properties or x in properties
+    or even key in properties, basically the name doesnt matter as long as we what declare in the directives line up {{ property.name }}
+
+
+what does not manipulating the DOM in a controller look like?
+  we want the controller to be as clean as possible with only 1 purpose
+
+how to use jquery with angular?
+ is it a pick and choose or can both coexist?
+ angular is for light loading webpages that do not contain a lot of information?
+ why do transition properties not work on angular?
+ jQuery is more for animations and and more data heavy? and/or DOM manipulation?
