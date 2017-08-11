@@ -3,6 +3,8 @@
 
     this.albumData  = Fixtures.getAlbum();
     this.songPlayer = SongPlayer;
+    //are we referring to the controller or the object?
+    //service object?
   }
 
   angular
