@@ -30,18 +30,21 @@
         };
 
         var playSong = function(song) {
+          song = song || SongPlayer.currentSong;
           currentBuzzObject.play();
           song.playing = true;
         };
 
         var pauseSong = function(song) {
+          song = song || SongPlayer.currentSong;
           currentBuzzObject.pause();
           song.playing = false;
         };
 
         var stopSong = function(song) {
+          song = song || SongPlayer.currentSong;
           currentBuzzObject.stop();
-          SongPlayer.currentSong.playing = null;
+          song.playing = null;
         };
 
 /**
@@ -86,7 +89,7 @@
             //calling the stop method here will make the song start from 1 again if it was previously on 1
             //currentBuzzObject.stop();
             //SongPlayer.currentSong.playing = null;
-            stopSong(song);
+            stopSong();
           } else {
             var song = currentAlbum.songs[currentSongIndex];
             setSong(song);
@@ -108,7 +111,7 @@
             //else play next index of song
             //currentBuzzObject.stop();
             //SongPlayer.currentSong.playing = null;
-            stopSong(song);
+            stopSong();
           } else {
             var song = currentAlbum.songs[currentSongIndex];
             setSong(song);
