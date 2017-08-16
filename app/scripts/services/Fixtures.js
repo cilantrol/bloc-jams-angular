@@ -1,14 +1,14 @@
 (function() {
-    function Fixtures() {
+    function Fixtures () {
         var Fixtures = {};
 //Note that a forward slash (/) has been added to the beginning of each asset URL.
-        var albumPicasso =  {
+        var albumPicasso = {
           title: 'The Colors',
           artist: 'Pablo Picasso',
           label: 'Cubism',
           year: '1881',
           albumArtUrl: '/assets/images/album_covers/01.png',
-          songs:   [
+          songs: [
                 {title: 'Blue', duration: 161.71, audioUrl: '/assets/music/blue'},
                 {title: 'Green', duration: 103.96, audioUrl: '/assets/music/green'},
                 {title: 'Red', duration: 268.45, audioUrl: '/assets/music/red'},
@@ -16,18 +16,18 @@
                 {title: 'Magenta', duration: 374.22, audioUrl: '/assets/music/magenta'}
           ]
         };
-        var albumMarconi =  {
+        var albumMarconi = {
           title: 'The Telephone',
           artist: 'Guglielmo Marconi',
           label: 'EM',
           year: '1909',
           albumArtUrl: '/assets/images/album_covers/20.png',
-          songs:   [
+          songs:  [
                 {title: 'Hello, Operator', duration: '1:01'},
-                {title: 'Ring, ring, ring' , duration: '5:01'},
-                {title: 'Fits in your pocket' , duration: '3:21'},
-                {title: 'Can you hear me now?' , duration: '3:14'},
-                {title: 'Wrong phone number' , duration: '2:15'}
+                {title: 'Ring, ring, ring', duration: '5:01'},
+                {title: 'Fits in your pocket', duration: '3:21'},
+                {title: 'Can you hear me now?', duration: '3:14'},
+                {title: 'Wrong phone number', duration: '2:15'}
           ]
         };
         var albumTesting =  {
@@ -51,9 +51,13 @@
           return albumPicasso;
       };
 
-    //  Fixtures.getCollection = function(numberOfAlbums)  {
-    //    return [];
-    //  };
+      Fixtures.getCollection = function(numberOfAlbums) {
+        this.albums = [];
+        for (var i=0; i<numberOfAlbums; i++)  {
+          this.albums.push(albumPicasso);
+        }
+        return this.albums;
+      };
         return Fixtures;
     }
 
