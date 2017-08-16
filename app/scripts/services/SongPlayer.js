@@ -47,10 +47,10 @@
           song.playing = null;
         };
 
-/**
-*@desc tracks index of currentAlbum
-*@type {Object} song
-*/
+        /**
+        * @desc tracks index of currentAlbum
+        * @type {Object} song
+        */
         var getSongIndex = function(song) {
           return currentAlbum.songs.indexOf(song);
         };
@@ -75,11 +75,11 @@
           pauseSong(song);
         };
 
-/**
-*@desc click on playerbar previous button to go back 1 song
-* currentSongIndex == a number
-*@type {Object}
-*/
+        /**
+        * @desc click on playerbar previous button to go back 1 song
+        * currentSongIndex == a number
+        * @type {Object}
+        */
         SongPlayer.previous = function()  {
           var currentSongIndex = getSongIndex(SongPlayer.currentSong);
           currentSongIndex--;
@@ -97,11 +97,11 @@
           }
         };
 
-/**
-*@desc click on playerbar previous button to go foward 1 song
-* currentSongIndex == a number
-*@type {Object}
-*/
+        /**
+        * @desc click on playerbar previous button to go foward 1 song
+        * currentSongIndex == a number
+        * @type {Object}
+        */
         SongPlayer.next = function()  {
           var currentSongIndex = getSongIndex(SongPlayer.currentSong);
           currentSongIndex++;
