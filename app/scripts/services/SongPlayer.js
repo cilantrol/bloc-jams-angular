@@ -1,22 +1,15 @@
 (function() {
     function SongPlayer(Fixtures) {
        var SongPlayer = {};
-
-       /**
-       * @desc Buzz object audio file
-       * @type {Object}
-       */
        var currentAlbum = Fixtures.getAlbum();
        var currentBuzzObject = null;
 /*The play method takes an argument, song, which we'll get from the Album view when a user clicks the play button; the ngRepeat directive used in the Album view template will dictate which song to pass into the function. The play method creates a new Buzz object using the song's audioUrl property and then calls Buzz's own play method on the object.*/
-
-/**
-* @function setSong
-* @desc Stops currently playing song and loads new audio file as currentBuzzObject
-* @param {Object} song
-*/
-        //PRIVATE
-
+        /**
+         * @function setSong
+         * @desc Stops currently playing song and loads new audio file as currentBuzzObject
+         * @type {Object} song
+         * @private
+         */
         var setSong = function(song) {
            if (currentBuzzObject) {
                currentBuzzObject.stop();
@@ -28,36 +21,57 @@
            });
            SongPlayer.currentSong = song;
         };
-
+        /**
+         * @function playSong
+         * @desc play currentBuzzObject
+         * @type {Object} song
+         * @private
+         */
         var playSong = function(song) {
           song = song || SongPlayer.currentSong;
           currentBuzzObject.play();
           song.playing = true;
         };
-
+        /**
+         * @function pauseSong
+         * @desc pause currentBuzzObject remembers the position
+         * @param {Object} song
+         * @private
+         */
         var pauseSong = function(song) {
           song = song || SongPlayer.currentSong;
           currentBuzzObject.pause();
           song.playing = false;
         };
-
+        /**
+         * @function stopSong
+         * @desc Stops currently playing song/currentBuzzObject
+         * @param {Object} song
+         * @private
+         */
         var stopSong = function(song) {
           song = song || SongPlayer.currentSong;
           currentBuzzObject.stop();
           song.playing = null;
         };
-
         /**
-        * @desc tracks index of currentAlbum
-        * @type {Object} song
-        */
+         * @function getSongIndex
+         * @desc tracks index of currentAlbum
+         * @type {Object} song
+         * @private
+         */
         var getSongIndex = function(song) {
           return currentAlbum.songs.indexOf(song);
         };
         //PUBLIC
 
         SongPlayer.currentSong = null;
-
+        /**
+         * @method .play
+         * @desc when clicking on the song-item table play song on these conditions
+         * @type {Object} song
+         * @public
+         */
         SongPlayer.play = function(song) {
           song = song || SongPlayer.currentSong;
           if (SongPlayer.currentSong !== song) {
@@ -69,17 +83,23 @@
             }
           }
         };
-
+        /**
+         * @method .pause
+         * @desc when clicking on the song-item table pause song on these conditions
+         * @type {Object} song
+         * @public
+         */
         SongPlayer.pause = function(song) {
           song = song || SongPlayer.currentSong;
           pauseSong(song);
         };
-
         /**
-        * @desc click on playerbar previous button to go back 1 song
-        * currentSongIndex == a number
-        * @type {Object}
-        */
+         * @method .previous
+         * @desc click on playerbar previous button to go back 1 song
+         * currentSongIndex == a number
+         * @type {Object}
+         * @public
+         */
         SongPlayer.previous = function()  {
           var currentSongIndex = getSongIndex(SongPlayer.currentSong);
           currentSongIndex--;
@@ -96,12 +116,13 @@
             playSong(song);
           }
         };
-
         /**
-        * @desc click on playerbar previous button to go foward 1 song
-        * currentSongIndex == a number
-        * @type {Object}
-        */
+         * @method .next
+         * @desc click on playerbar next button to go to next song
+         * currentSongIndex == a number
+         * @type {Object}
+         * @public
+         */
         SongPlayer.next = function()  {
           var currentSongIndex = getSongIndex(SongPlayer.currentSong);
           currentSongIndex++;
