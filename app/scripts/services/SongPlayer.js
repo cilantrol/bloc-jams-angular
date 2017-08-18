@@ -16,6 +16,7 @@
 * @param {Object} song
 */
         //PRIVATE
+
         var setSong = function(song) {
            if (currentBuzzObject) {
                currentBuzzObject.stop();
@@ -29,23 +30,32 @@
         };
 
         var playSong = function(song) {
+          song = song || SongPlayer.currentSong;
           currentBuzzObject.play();
           song.playing = true;
         };
 
         var pauseSong = function(song) {
+          song = song || SongPlayer.currentSong;
           currentBuzzObject.pause();
           song.playing = false;
         };
 
-/**
-*@desc tracks index of currentAlbum
-*@type {Object} song
-*/
+        var stopSong = function(song) {
+          song = song || SongPlayer.currentSong;
+          currentBuzzObject.stop();
+          song.playing = null;
+        };
+
+        /**
+        * @desc tracks index of currentAlbum
+        * @type {Object} song
+        */
         var getSongIndex = function(song) {
           return currentAlbum.songs.indexOf(song);
         };
         //PUBLIC
+
         SongPlayer.currentSong = null;
 
         SongPlayer.play = function(song) {
@@ -65,11 +75,11 @@
           pauseSong(song);
         };
 
-/**
-*@desc click on playerbar previous button to go back 1 song
-* currentSongIndex == a number
-*@type {Object}
-*/
+        /**
+        * @desc click on playerbar previous button to go back 1 song
+        * currentSongIndex == a number
+        * @type {Object}
+        */
         SongPlayer.previous = function()  {
           var currentSongIndex = getSongIndex(SongPlayer.currentSong);
           currentSongIndex--;
@@ -77,8 +87,31 @@
           if(currentSongIndex < 0)  {
             //my preference would be to set currentSongIndex = the length
             //calling the stop method here will make the song start from 1 again if it was previously on 1
-            currentBuzzObject.stop();
-            SongPlayer.currentSong.playing = null;
+            //currentBuzzObject.stop();
+            //SongPlayer.currentSong.playing = null;
+            stopSong();
+          } else {
+            var song = currentAlbum.songs[currentSongIndex];
+            setSong(song);
+            playSong(song);
+          }
+        };
+
+        /**
+        * @desc click on playerbar previous button to go foward 1 song
+        * currentSongIndex == a number
+        * @type {Object}
+        */
+        SongPlayer.next = function()  {
+          var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+          currentSongIndex++;
+
+          if(currentSongIndex > currentAlbum.songs.length)  {
+            //if index > length then stop playing.
+            //else play next index of song
+            //currentBuzzObject.stop();
+            //SongPlayer.currentSong.playing = null;
+            stopSong();
           } else {
             var song = currentAlbum.songs[currentSongIndex];
             setSong(song);
