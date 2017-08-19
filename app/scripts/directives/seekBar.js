@@ -23,12 +23,23 @@
       templateUrl: '/templates/directives/seek_bar.html',
       replace: true,
       restrict: 'E',
-      scope: { },
+      scope: {
+        onChange: '&'
+      },
       link: function(scope, element, attributes){
         scope.value = 0;
         scope.max = 100;
 
         var seekBar = $(element);
+
+        attributes.$observe('value', function(newValue) {
+          scope.value = newValue;
+        });
+
+        attributes.$observe('max', function(newValue) {
+          scope.max = newValue;
+        });
+
         /**
          * @function percentString
          * @desc turns values/numbers into string with a %
@@ -65,6 +76,7 @@
         scope.onClickSeekBar = function(event)  {
           var percent = calculatePercent(seekBar, event);
           scope.value = percent * scope.max;
+          notifyOnChange(scope.value);
         };
         /**
          * @method trackThumb
@@ -76,9 +88,10 @@
           $document.bind('mousemove.thumb',function(event)  {
             var percent = calculatePercent(seekBar, event);
             //.$apply this is what causes the thumb to update
-            //scope.$apply(function() {
+            scope.$apply(function() {
               scope.value = percent * scope.max;
-            //});
+              notifyOnChange(scope.value);
+            });
           });
           /**
            * @desc use jQuery bind here
@@ -88,6 +101,18 @@
             $document.unbind('mouseup.thumb');
           });
         };
+        /**
+         * @function notifyOnChange
+         * @desc notifty onChange that the scope.value has changed
+         * @param {number} newValue
+         * @public
+         */
+        var notifyOnChange = function(newValue) {
+          if (typeof scope.OnChange === 'function') {
+            scope.OnChange({value: newValue});
+          }
+        };
+
       }
     };
   }
