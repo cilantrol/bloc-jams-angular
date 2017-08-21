@@ -1,6 +1,3 @@
-//angular.module('blocJams', []);
-
-
 (function() {
   function config($stateProvider, $locationProvider){
     $locationProvider
