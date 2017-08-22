@@ -80,7 +80,7 @@
         SongPlayer.currentSong = null;
         //Current playback time (in seconds) of currently playing song
         SongPlayer.currentTime = null;
-        SongPlayer.volume = null;
+
         /**
          * @method .play
          * @desc when clicking on the song-item table play song on these conditions
