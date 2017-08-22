@@ -108,8 +108,8 @@
          * @public
          */
         var notifyOnChange = function(newValue) {
-          if (typeof scope.OnChange === 'function') {
-            scope.OnChange({value: newValue});
+          if (typeof scope.onChange === 'function') {
+            scope.onChange({value: newValue});
           }
         };
 
