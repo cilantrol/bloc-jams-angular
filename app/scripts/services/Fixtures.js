@@ -46,11 +46,21 @@
         };
 
 //Add a public getAlbum method to the service:
-
+      /**
+       * @method .getAlbum
+       * @desc grabs album from fixed data from fixtures
+       * @type {Object}
+       * @public
+       */
       Fixtures.getAlbum = function() {
           return albumPicasso;
       };
-
+      /**
+       * @method .getCollection
+       * @desc generates 
+       * @type {Object} numberOfAlbums
+       * @public
+       */
       Fixtures.getCollection = function(numberOfAlbums) {
         this.albums = [];
         for (var i=0; i<numberOfAlbums; i++)  {

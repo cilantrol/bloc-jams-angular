@@ -3,7 +3,7 @@
        var SongPlayer = {};
        var currentAlbum = Fixtures.getAlbum();
        var currentBuzzObject = null;
-/*The play method takes an argument, song, which we'll get from the Album view when a user clicks the play button; the ngRepeat directive used in the Album view template will dictate which song to pass into the function. The play method creates a new Buzz object using the song's audioUrl property and then calls Buzz's own play method on the object.*/
+
         /**
          * @function setSong
          * @desc Stops currently playing song and loads new audio file as currentBuzzObject
@@ -20,10 +20,17 @@
                preload: true
            });
            currentBuzzObject.bind('timeupdate', function() {
-               $rootScope.$apply(function() {
-                   SongPlayer.currentTime = currentBuzzObject.getTime();
+              $rootScope.$apply(function() {
+                  SongPlayer.currentTime = currentBuzzObject.getTime();
                });
            });
+
+           currentBuzzObject.bind('volumechange', function() {
+              $rootScope.$apply(function()  {
+                SongPlayer.volume = currentBuzzObject.getVolume(80);
+              });
+           });
+           //SongPlayer.setVolume(30);
            SongPlayer.currentSong = song;
         };
         /**
@@ -73,6 +80,7 @@
         SongPlayer.currentSong = null;
         //Current playback time (in seconds) of currently playing song
         SongPlayer.currentTime = null;
+
         /**
          * @method .play
          * @desc when clicking on the song-item table play song on these conditions
@@ -150,11 +158,32 @@
          * @method setCurrentTime
          * @desc Set current time (in seconds) of currently playing song
          * @param {Number} time
+         * @public
          */
         SongPlayer.setCurrentTime = function(time) {
             if (currentBuzzObject) {
                 currentBuzzObject.setTime(time);
             }
+        };
+        /**
+         * @method volume
+         * @desc hold the value of volume
+         * @param
+         * @public
+         */
+      //  SongPlayer.volume = function()  {
+      //    return 80;
+      //  };
+        /**
+         * @method setVolume
+         * @desc change value of volume
+         * @param
+         * @public
+         */
+        SongPlayer.setVolume = function(volume) {
+          if(currentBuzzObject){
+            currentBuzzObject.setVolume(volume);
+          }
         };
 
       return SongPlayer;
