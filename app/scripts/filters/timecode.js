@@ -1,7 +1,7 @@
 (function() {
     function timecode() {
         return function(seconds) {
-          var seconds = Number.parseFloat(seconds);
+/*          var seconds = Number.parseFloat(seconds);
 
           if(Number.isNaN(seconds)) {
             return '-:--';
@@ -17,9 +17,23 @@
             output += '0';
           }
 
-          output += remainingSeconds;
-            return output;
+          output += remainingSeconds;*/
+          //var mySound = new buzz.sound("/sounds/mysound.ogg"),
+          //timer = buzz.toTimer(mySound.getDuration());
+
+          //ocument.getElemetById("duration").innerHTML = timer;
+
+          var seconds = Number.parseFloat(seconds);
+
+           if(Number.isNaN(seconds)) {
+             return '-:--';
+           }
+
+          return buzz.toTimer(seconds);
         };
+
+
+
     }
 
     angular

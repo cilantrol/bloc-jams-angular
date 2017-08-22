@@ -25,11 +25,11 @@
                });
            });
 
-           currentBuzzObject.bind('volumechange', function() {
+           /*currentBuzzObject.bind('volumechange', function() {
               $rootScope.$apply(function()  {
                 SongPlayer.volume = currentBuzzObject.getVolume(80);
               });
-           });
+           });*/
            //SongPlayer.setVolume(30);
            SongPlayer.currentSong = song;
         };
@@ -80,7 +80,7 @@
         SongPlayer.currentSong = null;
         //Current playback time (in seconds) of currently playing song
         SongPlayer.currentTime = null;
-
+        SongPlayer.volume = 100;
         /**
          * @method .play
          * @desc when clicking on the song-item table play song on these conditions
