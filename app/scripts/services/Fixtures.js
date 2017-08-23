@@ -57,14 +57,14 @@
       };
       /**
        * @method .getCollection
-       * @desc generates 
-       * @type {Object} numberOfAlbums
+       * @desc generates
+       * @type {Object} numberOfAlbums 
        * @public
        */
       Fixtures.getCollection = function(numberOfAlbums) {
         this.albums = [];
         for (var i=0; i<numberOfAlbums; i++)  {
-          this.albums.push(albumPicasso);
+          this.albums.push(albumPicasso, albumMarconi, albumTesting);
         }
         return this.albums;
       };

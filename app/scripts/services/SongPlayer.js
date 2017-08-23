@@ -25,6 +25,11 @@
                });
            });
 
+/*           currentBuzzObject.bind('ended', function(){
+             $rootScope.$apply(function()  {
+               SongPlayer.next();
+             });
+           });*/
            /*currentBuzzObject.bind('volumechange', function() {
               $rootScope.$apply(function()  {
                 SongPlayer.volume = currentBuzzObject.getVolume(80);
@@ -75,6 +80,39 @@
         var getSongIndex = function(song) {
           return currentAlbum.songs.indexOf(song);
         };
+        /**
+         * @method songEnds
+         * @desc start nextSong on albumtrack when current one ends
+         * @param
+         * @public
+         */
+        var songEnds = function(song)  {
+          currentBuzzObject.bind('ended', function(){
+            $rootScope.$apply(function()  {
+              SongPlayer.next();
+            });
+          });
+        };
+
+          /*  //set track index+1
+            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+            currentSongIndex++;
+            if(currentSongIndex > currentAlbum.songs.length)  {
+              //if index > length then stop playing.
+              //else play next index of song
+              //currentBuzzObject.stop();
+              //SongPlayer.currentSong.playing = null;
+              stopSong();
+            } else {
+              var song = currentAlbum.songs[currentSongIndex];
+              setSong(song);
+              playSong(song);
+            }*/
+
+
+
+
+
         //PUBLIC
 
         SongPlayer.currentSong = null;
@@ -92,10 +130,12 @@
           if (SongPlayer.currentSong !== song) {
             setSong(song);
             playSong(song);
+            songEnds(song);
           } else if (SongPlayer.currentSong === song) {
             if (currentBuzzObject.isPaused()) {
                 playSong(song);
             }
+            songEnds(song);
           }
         };
         /**
@@ -165,15 +205,7 @@
                 currentBuzzObject.setTime(time);
             }
         };
-        /**
-         * @method volume
-         * @desc hold the value of volume
-         * @param
-         * @public
-         */
-      //  SongPlayer.volume = function()  {
-      //    return 80;
-      //  };
+
         /**
          * @method setVolume
          * @desc change value of volume

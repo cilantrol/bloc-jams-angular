@@ -107,9 +107,9 @@
          * @param {number} newValue
          * @public
          */
-        var notifyOnChange = function(neValue) {
+        var notifyOnChange = function(newValue) {
           if (typeof scope.onChange === 'function') {
-            scope.onChange({value: neValue});
+            scope.onChange({value: newValue});
           }
         };
 

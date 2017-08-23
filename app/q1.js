@@ -39,6 +39,9 @@ The parameter newValue can be changed to anything but newValue makes the most se
 
 Why do we refer to on-change in the view but onChange in the JavaScript? Send your explanation to your mentor.
 
+
+buzz.method vs currentBuzzObject.method
+
 var volumeInput = function()  {
   //first we need to calculate the percentage of the fill
   var calculatePercent()
