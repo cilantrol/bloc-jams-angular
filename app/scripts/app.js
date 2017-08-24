@@ -29,6 +29,16 @@
         url:'/album',
         controller: 'AlbumCtrl as album',
         templateUrl: '/templates/album.html'
+      })
+      .state('account', {
+        url: '/account',
+        controller: 'AccountCtrl as account',
+        templateUrl: '/templates/account.html'
+      })
+      .state('about', {
+        url: '/about',
+        controller: 'AboutCtrl as about',
+        templateUrl: '/templates/about.html'
       });
   }
 

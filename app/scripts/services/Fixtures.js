@@ -45,6 +45,10 @@
           ]
         };
 
+        var albumBook = function()  {
+          return [albumPicasso, albumMarconi, albumTesting];
+        };
+
 //Add a public getAlbum method to the service:
       /**
        * @method .getAlbum
@@ -53,12 +57,15 @@
        * @public
        */
       Fixtures.getAlbum = function() {
-          return albumPicasso;
+        this.albums = [];
+        this.albums.push(albumPicasso, albumMarconi, albumTesting);
+        console.log(this.albums);
+        return this.albums;
       };
       /**
        * @method .getCollection
        * @desc generates
-       * @type {Object} numberOfAlbums 
+       * @type {Object} numberOfAlbums
        * @public
        */
       Fixtures.getCollection = function(numberOfAlbums) {
